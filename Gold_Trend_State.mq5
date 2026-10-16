@@ -53,7 +53,7 @@ struct TfData
 TfData Fast, Slow;
 
 int    lastAlerted = 99;
-string labelName   = "GTS_Label";
+string labelName;
 
 //+------------------------------------------------------------------+
 bool InitTf(TfData &d, ENUM_TIMEFRAMES tf, bool withAdx)
@@ -193,6 +193,7 @@ int OnInit()
    SetIndexBuffer(3, RawBuf,   INDICATOR_CALCULATIONS);
    PlotIndexSetDouble(0, PLOT_EMPTY_VALUE, EMPTY_VALUE);
    IndicatorSetString(INDICATOR_SHORTNAME, "Gold Trend State");
+   labelName = "GTS_Label_" + IntegerToString(GetTickCount()) + "_" + IntegerToString(MathRand());
    IndicatorSetInteger(INDICATOR_DIGITS, 0);
 
    if(PeriodSeconds(InpTfFast) <= PeriodSeconds() || PeriodSeconds(InpTfSlow) < PeriodSeconds(InpTfFast))
