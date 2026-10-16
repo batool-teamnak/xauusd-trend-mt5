@@ -161,7 +161,7 @@ void UpdateLabel(int state)
       ObjectCreate(0, labelName, OBJ_LABEL, win, 0, 0);
       ObjectSetInteger(0, labelName, OBJPROP_CORNER, CORNER_LEFT_UPPER);
       ObjectSetInteger(0, labelName, OBJPROP_XDISTANCE, 8);
-      ObjectSetInteger(0, labelName, OBJPROP_YDISTANCE, 4);
+      ObjectSetInteger(0, labelName, OBJPROP_YDISTANCE, 18);
       ObjectSetInteger(0, labelName, OBJPROP_FONTSIZE, 10);
       ObjectSetString(0, labelName, OBJPROP_FONT, "Arial Bold");
       ObjectSetInteger(0, labelName, OBJPROP_SELECTABLE, false);
