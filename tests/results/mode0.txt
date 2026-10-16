@@ -1,0 +1,34 @@
+compiling GTS_Probe ...
+﻿
+ : information: info property tester_indicator "Gold_Trend_State" has been implicitly added during compilation because the indicator is used in iCustom function
+Result: 0 errors, 0 warnings, 810 ms elapsed, cpu='X64 Regular'
+testing GTS_Probe  XAUUSD M1  2026.07.01 .. 2026.09.30  model=4
+
+  MetaTrader 5 strategy tester report
+  ----------------------------------------------------
+  Total Net Profit                -9 609.28
+  Profit Factor                   0.32
+  Expected Payoff                 -2.36
+  Equity Drawdown Maximal         9 889.08 (96.20%)
+  Balance Drawdown Maximal        9 889.08 (96.20%)
+  Total Trades                    4069
+  Profit Trades (% of total)      1368 (33.62%)
+  Recovery Factor                 -0.97
+  Sharpe Ratio                    -5.00
+  History Quality                 100% real ticks
+  ----------------------------------------------------
+  Gross Profit                    4 518.50
+  Gross Loss                      -14 127.78
+  Balance Drawdown Relative       96.20% (9 889.08)
+  Equity Drawdown Relative        96.20% (9 889.08)
+  Total Deals                     8138
+  Loss Trades (% of total)        2701 (66.38%)
+  Largest profit trade            277.60
+  Largest loss trade              -594.58
+  Average profit trade            3.30
+  Average loss trade              -5.23
+  Maximum consecutive wins ($)    9 (26.80)
+  Maximum consecutive losses ($)  31 (-164.40)
+  Bars                            85525
+  Ticks                           31555540
+

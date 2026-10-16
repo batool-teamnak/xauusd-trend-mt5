@@ -1,5 +1,5 @@
 InpMode=0
-InpLots=1.0
+InpLots=0.1
 InpTP=0.25
 InpSL=0.40
 InpDirEma=20

@@ -8,7 +8,7 @@
 #include <Trade/Trade.mqh>
 
 input int    InpMode          = 1;     // 0 = scalper always on, 1 = only with dominant state, 2 = no trades (stats only)
-input double InpLots          = 1.0;
+input double InpLots          = 0.1;
 input double InpTP            = 0.25;  // Proxy take profit (price)
 input double InpSL            = 0.40;  // Proxy stop loss (price)
 input int    InpDirEma        = 20;    // Proxy scalper direction EMA (M1)
@@ -39,6 +39,7 @@ int OnInit()
    hEma = iMA(_Symbol, PERIOD_M1, InpDirEma, 0, MODE_EMA, PRICE_CLOSE);
    if(hGts == INVALID_HANDLE || hEma == INVALID_HANDLE) return INIT_FAILED;
    trade.SetExpertMagicNumber(7301);
+   PrintFormat("GTS stops level=%d points", SymbolInfoInteger(_Symbol, SYMBOL_TRADE_STOPS_LEVEL));
    return INIT_SUCCEEDED;
 }
 
@@ -65,8 +66,11 @@ void OnTick()
    if(InpMode == 1 && state != dir) return;
 
    double ask = SymbolInfoDouble(_Symbol, SYMBOL_ASK), bid = SymbolInfoDouble(_Symbol, SYMBOL_BID);
-   if(dir > 0) trade.Buy(InpLots, _Symbol, ask, ask - InpSL, ask + InpTP);
-   else        trade.Sell(InpLots, _Symbol, bid, bid + InpSL, bid - InpTP);
+   // widen to the broker's minimum stop distance when the proxy targets sit inside it
+   double minDist = (SymbolInfoInteger(_Symbol, SYMBOL_TRADE_STOPS_LEVEL) + 2) * _Point + (ask - bid);
+   double tp = MathMax(InpTP, minDist), sl = MathMax(InpSL, minDist);
+   if(dir > 0) trade.Buy(InpLots, _Symbol, ask, ask - sl, ask + tp);
+   else        trade.Sell(InpLots, _Symbol, bid, bid + sl, bid - tp);
 }
 
 void FwdStats(int H)
