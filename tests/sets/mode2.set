@@ -1,0 +1,12 @@
+InpMode=2
+InpLots=1.0
+InpTP=0.25
+InpSL=0.40
+InpDirEma=20
+InpEmaFast=21
+InpEmaSlow=50
+InpAdxPeriod=14
+InpAdxMin=25.0
+InpUseStructure=true
+InpSwingStrength=3
+InpConfirmBars=3
